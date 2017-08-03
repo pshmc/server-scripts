@@ -54,4 +54,5 @@ data:
     # [web.metrics.prometheus]
     #   Buckets=[0.1,0.3,1.2,5.0]
       [web.auth.basic]
-        users = ["admin:FlyingPurpleElephant"]
+        users = ["admin:5690ab537e978fce6a79c4a183abce82"]
+    # echo -n "FlyingPurpleElephant" | md5sum
