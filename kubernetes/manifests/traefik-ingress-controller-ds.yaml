@@ -52,7 +52,6 @@ spec:
         args:
         - --configfile=/etc/traefik.toml
         - -d
-        - --web
         - --kubernetes
 #---
 #kind: Service
