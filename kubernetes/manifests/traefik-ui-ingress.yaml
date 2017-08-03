@@ -21,7 +21,8 @@ spec:
   rules:
   - host: cluster.datascience.psu.edu
     http:
-      paths: /traefik
-      - backend:
+      paths:
+      - path: /traefik
+        backend:
           serviceName: traefik-web-ui
           servicePort: 80
