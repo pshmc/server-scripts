@@ -17,7 +17,7 @@ spec:
         args:
         - --default-backend-service=default/default-http-backend
         - --default-ssl-certificate=default/tls-cluster-datascience-psu-edu
-        - --configmap=default/haproxy-ingress
+        #- --configmap=default/haproxy-ingress
         ports:
         - name: http
           containerPort: 80
