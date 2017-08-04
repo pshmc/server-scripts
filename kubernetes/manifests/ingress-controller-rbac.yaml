@@ -24,7 +24,7 @@ rules:
   - apiGroups:
       - extensions
     resources:
-      - ingresses/status
+      - ingresses
     verbs:
       - get
       - list
