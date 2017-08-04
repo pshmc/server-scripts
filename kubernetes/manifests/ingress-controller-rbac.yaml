@@ -22,9 +22,10 @@ rules:
       - update
       - watch
   - apiGroups:
-      - extensions
+      - "extensions"
     resources:
       - ingresses
+      - ingresses/status
     verbs:
       - get
       - list
