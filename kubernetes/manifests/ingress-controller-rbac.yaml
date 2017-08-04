@@ -35,3 +35,10 @@ subjects:
 - kind: ServiceAccount
   name: ingress-controller
   namespace: kube-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ingress-controller
+  namespace: kube-system
+---
