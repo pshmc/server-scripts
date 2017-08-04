@@ -7,20 +7,28 @@ rules:
   - apiGroups:
       - ""
     resources:
-      - pods
-      - services
+      - configmaps
       - endpoints
+      - events
+      - nodes
+      - pods
+      - secrets
+      - services
     verbs:
+      - create
       - get
       - list
+      - patch
+      - update
       - watch
   - apiGroups:
       - extensions
     resources:
-      - ingresses
+      - ingresses/status
     verbs:
       - get
       - list
+      - update
       - watch
 ---
 kind: ClusterRoleBinding
@@ -41,4 +49,3 @@ kind: ServiceAccount
 metadata:
   name: ingress-controller
   namespace: kube-system
----
