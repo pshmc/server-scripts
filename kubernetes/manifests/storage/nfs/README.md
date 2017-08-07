@@ -8,7 +8,10 @@ kubectl apply -f https://raw.githubusercontent.com/pshmc/server-scripts/master/k
 ```
 kubectl apply -f https://raw.githubusercontent.com/pshmc/server-scripts/master/kubernetes/manifests/storage/nfs/nfs-daemonset.yaml
 ```
-
+3. Configure StorageClass:
+```
+kubectl apply -f https://raw.githubusercontent.com/pshmc/server-scripts/master/kubernetes/manifests/storage/nfs/nfs-storageclass.yaml
+```
 ## Notes
 
 - from https://github.com/kubernetes-incubator/external-storage/tree/master/nfs
