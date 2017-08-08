@@ -1,0 +1,99 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+data:
+  master.cnf: |
+    # Apply this config only on the master.
+    [mysqld]
+    log-bin
+  slave.cnf: |
+    # Apply this config only on slaves.
+    [mysqld]
+    super-read-only
+---
+# Headless service for stable DNS entries of StatefulSet members.
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb
+  labels:
+    app: mariadb
+spec:
+  ports:
+  - name: mariadb
+    port: 3306
+  clusterIP: None
+  selector:
+    app: mariadb
+---
+# Client service for connecting to any Mariadb instance for reads.
+# For writes, you must instead connect to the master: mariadb-0.mariadb.
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-read
+  labels:
+    app: mariadb
+spec:
+  ports:
+  - name: mariadb
+    port: 3306
+  selector:
+    app: mariadb
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: mariadb
+spec:
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      containers:
+      - image: mariadb:10.3
+        name: mariadb
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mariadb
+        volumeMounts:
+        - name: mariadb-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mariadb-persistent-storage
+        persistentVolumeClaim:
+          claimName: mariadb-pv-claim
+      - name: mariadb-secret
+        secret: mariadb-secret
+        
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mariadb-secret
+type: Opaque
+data:
+  username: admin
+  password: MWYyZDFlMmU2N2Rm
