@@ -25,10 +25,11 @@ kubectl create \
 kubectl create \
   -f https://raw.githubusercontent.com/pshmc/server-scripts/master/kubernetes/manifests/apps/db/mariadb/svc.yaml
 
-# 
+# deploy the pod - this is for a single instance
 kubectl create \
-  -f https://raw.githubusercontent.com/pshmc/server-scripts/master/kubernetes/manifests/apps/db/mariadb/.yaml
+  -f https://raw.githubusercontent.com/pshmc/server-scripts/master/kubernetes/manifests/apps/db/mariadb/deployment.yaml
 
+# Make it accessible from outside the cluster
 kubectl create \
   -f https://raw.githubusercontent.com/pshmc/server-scripts/master/kubernetes/manifests/apps/db/mariadb/.yaml
 
