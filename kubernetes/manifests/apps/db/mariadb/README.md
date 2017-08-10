@@ -1,4 +1,4 @@
 
 ```
-export TESTTT=$(openssl rand -base64 32)
+export =$(openssl rand -base64 32)
 ```
