@@ -13,12 +13,12 @@ data:
     # Apply this config only on slaves.
     [mysqld]
     super-read-only
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mariadb-secret
-type: Opaque
-data:
-  username: admin
-  password: MWYyZDFlMmU2N2Rm
+#---
+#apiVersion: v1
+#kind: Secret
+#metadata:
+#  name: mariadb-secret
+#type: Opaque
+#data:
+#  username: admin
+#  password: MWYyZDFlMmU2N2Rm
