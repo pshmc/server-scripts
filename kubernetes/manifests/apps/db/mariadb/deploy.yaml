@@ -41,9 +41,11 @@ spec:
         livenessProbe:
           exec:
             command:
+            #- cat /etc/mysqlsecrets/mysqlrootpassword
             - mysqladmin
             - -u root
-            - -p$MARIADB_ROOT_PASSWORD
+            - -p(cat /etc/mysqlsecrets/mysqlrootpassword | base64 --decode )
+            #- -p$MARIADB_ROOT_PASSWORD
             - ping
           initialDelaySeconds: 30
           timeoutSeconds: 5
@@ -52,7 +54,8 @@ spec:
             command:
             - mysqladmin
             - -u root
-            - -p$MARIADB_ROOT_PASSWORD
+            - -p(cat /etc/mysqlsecrets/mysqlrootpassword | base64 --decode )
+            #- -p$MARIADB_ROOT_PASSWORD
             - ping
           initialDelaySeconds: 5
           timeoutSeconds: 1
@@ -60,6 +63,8 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /var/lib/mysql
+        - name: mariadb
+          mountPath: /etc/mysqlsecrets
       volumes:
       - name: config
         configMap:
@@ -70,3 +75,6 @@ spec:
       - name: mariadb
         secret:
           secretName: mariadb
+          items:
+            key: mariadb-root-password
+            path: mysqlrootpassword
