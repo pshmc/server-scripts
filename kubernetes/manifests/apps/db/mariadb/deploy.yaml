@@ -41,11 +41,9 @@ spec:
         livenessProbe:
           exec:
             command:
-            #- cat /etc/mysqlsecrets/mysqlrootpassword
             - mysqladmin
             - -u root
-            - -p(cat /etc/mysqlsecrets/mysqlrootpassword)
-            #- -p$MARIADB_ROOT_PASSWORD
+            - -p$(cat /etc/mysqlsecrets/mysqlrootpassword)
             - ping
           initialDelaySeconds: 30
           timeoutSeconds: 5
@@ -54,8 +52,7 @@ spec:
             command:
             - mysqladmin
             - -u root
-            - -p(cat /etc/mysqlsecrets/mysqlrootpassword)
-            #- -p$MARIADB_ROOT_PASSWORD
+            - -p$(cat /etc/mysqlsecrets/mysqlrootpassword)
             - ping
           initialDelaySeconds: 5
           timeoutSeconds: 1
