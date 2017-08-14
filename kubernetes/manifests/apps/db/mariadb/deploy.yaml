@@ -14,7 +14,12 @@ spec:
       - name: mariadb
         image: "mariadb:10.3"
         imagePullPolicy: "IfNotPresent"
-        env:
+        env: 
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb
+              key: mariadb-root-password
         - name: MARIADB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
