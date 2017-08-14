@@ -12,7 +12,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     server: 172.16.16.212
-    path: "/data/nfs/exports"
+    path: "/data/nfs/exports/mariadb"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
