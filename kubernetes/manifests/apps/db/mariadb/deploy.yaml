@@ -76,5 +76,5 @@ spec:
         secret:
           secretName: mariadb
           items:
-            key: mariadb-root-password
+          - key: mariadb-root-password
             path: mysqlrootpassword
