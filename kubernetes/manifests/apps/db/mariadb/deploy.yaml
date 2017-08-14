@@ -15,6 +15,7 @@ spec:
         image: "mariadb:10.3"
         imagePullPolicy: "IfNotPresent"
         env: 
+        #needed mysql root password env
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
