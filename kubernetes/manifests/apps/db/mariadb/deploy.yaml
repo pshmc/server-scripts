@@ -44,7 +44,7 @@ spec:
             #- cat /etc/mysqlsecrets/mysqlrootpassword
             - mysqladmin
             - -u root
-            - -p(cat /etc/mysqlsecrets/mysqlrootpassword | base64 --decode )
+            - -p(cat /etc/mysqlsecrets/mysqlrootpassword)
             #- -p$MARIADB_ROOT_PASSWORD
             - ping
           initialDelaySeconds: 30
@@ -54,7 +54,7 @@ spec:
             command:
             - mysqladmin
             - -u root
-            - -p(cat /etc/mysqlsecrets/mysqlrootpassword | base64 --decode )
+            - -p(cat /etc/mysqlsecrets/mysqlrootpassword)
             #- -p$MARIADB_ROOT_PASSWORD
             - ping
           initialDelaySeconds: 5
