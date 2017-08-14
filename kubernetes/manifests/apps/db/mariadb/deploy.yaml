@@ -18,12 +18,12 @@ spec:
         - name: MARIADB_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: secret
+              name: mariadb
               key: mariadb-root-password
         - name: MARIADB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: secret
+              name: mariadb
               key: mariadb-password
         - name: MARIADB_USER
           value: "dev"
@@ -57,6 +57,6 @@ spec:
       - name: data
         persistentVolumeClaim:
           claimName: mariadb
-      - name: secret
+      - name: mariadb
         secret:
           secretName: mariadb
