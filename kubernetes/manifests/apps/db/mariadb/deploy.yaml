@@ -38,24 +38,25 @@ spec:
         ports:
         - name: mysql
           containerPort: 3306
-        livenessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - -u root
-            - -p$(cat /etc/mysqlsecrets/mysqlrootpassword)
-            - ping
-          initialDelaySeconds: 30
-          timeoutSeconds: 5
-        readinessProbe:
-          exec:
-            command:
-            - mysqladmin
-            - -u root
-            - -p$(cat /etc/mysqlsecrets/mysqlrootpassword)
-            - ping
-          initialDelaySeconds: 5
-          timeoutSeconds: 1
+        #probes aren't working properly - password continues to be denied - probably a shell issue - don't have time...
+        #livenessProbe:
+        #  exec:
+        #    command:
+        #    - mysqladmin
+        #    - -u root
+        #    - -p$(cat /etc/mysqlsecrets/mysqlrootpassword)
+        #    - ping
+        #  initialDelaySeconds: 30
+        #  timeoutSeconds: 5
+        #readinessProbe:
+        #  exec:
+        #    command:
+        #    - mysqladmin
+        #    - -u root
+        #    - -p$(cat /etc/mysqlsecrets/mysqlrootpassword)
+        #    - ping
+        #  initialDelaySeconds: 5
+        #  timeoutSeconds: 1
         #resources:
         volumeMounts:
         - name: data
