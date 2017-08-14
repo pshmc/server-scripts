@@ -49,6 +49,8 @@ spec:
           exec:
             command:
             - mysqladmin
+            - -u root
+            - -p${MARIADB_ROOT_PASSWORD}
             - ping
           initialDelaySeconds: 5
           timeoutSeconds: 1
