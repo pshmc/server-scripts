@@ -9,3 +9,12 @@ data:
   # placeholder for rserver.conf configmap
   rsession.conf: |
   # placeholder for rsession.conf configmap
+  session-default-working-dir=/data
+  session-default-new-project-dir=/data
+  
+  # need to put this in a the rstudio profile startup script
+  ls -alh data
+  
+  # also need to reconfigure deployment to consume this configmap
+  
+  # also, initiator pods??
