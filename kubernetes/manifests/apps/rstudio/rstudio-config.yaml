@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rstudio
+  labels:
+    app: rstudio
+data:
+  rserver.conf: |
+  # placeholder for rserver.conf configmap
+  rsession.conf: |
+  # placeholder for rsession.conf configmap
