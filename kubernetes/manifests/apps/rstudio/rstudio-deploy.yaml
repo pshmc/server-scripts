@@ -1,0 +1,33 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: rstudio
+  labels:
+    app: rstudio
+spec:
+  template:
+    metadata:
+      labels:
+        app: rstudio
+    spec:
+      containers:
+      - name: rstudio
+        image: "rocker/verse:latest"
+        imagePullPolicy: "IfNotPresent"
+        ports:
+        - name: rstudio
+          containerPort: 8787
+        volumeMounts:
+        - name: rstudio
+          mountPath: /data
+          subPath: data
+        - name: rstudio
+          mountPath: /home
+          subPath: home
+        - name: rstudio
+          mountPath: /etc
+          subPath: etc
+      volumes:
+      - name: rstudio
+        persistentVolumeClaim:
+          claimName: rstudio
