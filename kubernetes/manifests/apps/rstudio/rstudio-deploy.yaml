@@ -25,7 +25,7 @@ spec:
           mountPath: /home
           subPath: home
         - name: rstudio
-          mountPath: /etc
+          mountPath: /etc/rstudio
           subPath: etc
       volumes:
       - name: rstudio
