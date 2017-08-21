@@ -6,7 +6,8 @@ metadata:
     ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
+  - host: rstudio.apps.datascience.psu.edu
+    http:
       paths:
       - path: /
         backend:
