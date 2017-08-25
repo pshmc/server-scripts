@@ -8,7 +8,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: mariadb
+  - name: rstudio
     port: 8787
     targetPort: rstudio
   selector:
